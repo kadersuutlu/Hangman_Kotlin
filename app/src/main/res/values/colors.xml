@@ -2,6 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#00C4CC</color>
-    <color name="purple">#7C2AE8</color>
+    <color name="light_gray">#F1F2B7</color>
+    <color name="yellowish_green">#CFD086</color>
+    <color name="red">#E55252</color>
+    <color name="green">#3B984A</color>
+    <color name="indigo">#3F51B5</color>
+    <color name="light_coral">#E37474</color>
+    <color name="limeric">#DFE247</color>
+    <color name="oliv_drab">#A6A849</color>
+    <color name="grey">#9E9E9E</color>
+    <color name="scarlet">#F42F2F</color>
+    <color name="red_maroon">#2C0909</color>
 </resources>

@@ -10,13 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kotlin_Hangman"
+        android:theme="@style/Theme.Kotlin_hangman"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Splash_Screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

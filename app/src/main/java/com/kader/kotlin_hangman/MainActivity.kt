@@ -1,46 +1,24 @@
 package com.kader.kotlin_hangman
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.GridLayout
+import android.widget.GridView
 
 class MainActivity : AppCompatActivity() {
-
-    private val alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val keyBoardGridLayout=findViewById<GridLayout>(R.id.keyboardGridLayout)
+        val gridView = findViewById<GridView>(R.id.gridView)
+        val alphabet = listOf("A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z")
 
-        for (letter in alphabet){
-            val button=Button(this)
-            button.text=letter.toString()
+        val adapter = AlphabetAdapter(this, alphabet)
+        gridView.adapter = adapter
 
-            button.setBackgroundColor(getColor(R.color.green))
-
-            button.setOnClickListener {
-                if (!button.isEnabled){
-                    return@setOnClickListener
-                }
-
-                makeGuess(letter)
-
-                button.isEnabled=false
-
-                button.postDelayed({
-                    button.setBackgroundColor(getColor(R.color.purple))
-                    button.isEnabled=true
-                },500)
-            }
-            keyBoardGridLayout.addView(button)
+        gridView.setOnItemClickListener { _, _, position, _ ->
+            val selectedLetter = alphabet[position]
+            // Seçilen harf ile ilgili bir işlem yapabilirsiniz
         }
-    }
-
-    private fun makeGuess(letter: Char) {
 
     }
 }
