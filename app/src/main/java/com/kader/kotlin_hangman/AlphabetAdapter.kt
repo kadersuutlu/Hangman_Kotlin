@@ -2,6 +2,7 @@ package com.kader.kotlin_hangman
 
 import android.content.Context
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -22,9 +23,18 @@ class AlphabetAdapter(private val context: Context, private val alphabet: List<S
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val textView = TextView(context)
-        textView.text = alphabet[position]
-        textView.gravity = Gravity.CENTER
-        return textView
+        val letter = alphabet[position]
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val customView = inflater.inflate(R.layout.custom_letter_item, null)
+
+        // Özel görünümün içindeki TextView'yi bulun
+        val textView = customView.findViewById<TextView>(R.id.customTextView)
+
+        // Harfi TextView'e atayın
+        textView.text = letter
+        textView.gravity=Gravity.CENTER
+
+        return customView
     }
 }
+

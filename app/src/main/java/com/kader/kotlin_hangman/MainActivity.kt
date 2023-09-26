@@ -15,10 +15,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = AlphabetAdapter(this, alphabet)
         gridView.adapter = adapter
 
-        gridView.setOnItemClickListener { _, _, position, _ ->
-            val selectedLetter = alphabet[position]
-            // Seçilen harf ile ilgili bir işlem yapabilirsiniz
+        gridView.setOnItemClickListener { _, view, _, _ ->
+            // Tıklanan öğenin arka plan rengini değiştir
+            view.setBackgroundResource(R.drawable.custom_success_background)
         }
+
 
     }
 }
