@@ -1,0 +1,18 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/limeric_" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/limeric_" />
+
+
+    <size
+        android:width="600dp"
+        android:height="600dp" />
+
+
+    <corners
+        android:radius="0dp"
+        android:bottomLeftRadius="260dp"
+        android:bottomRightRadius="260dp"
+    />
+</shape>

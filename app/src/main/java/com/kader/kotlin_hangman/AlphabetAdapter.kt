@@ -27,10 +27,8 @@ class AlphabetAdapter(private val context: Context, private val alphabet: List<S
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val customView = inflater.inflate(R.layout.custom_letter_item, null)
 
-        // Özel görünümün içindeki TextView'yi bulun
         val textView = customView.findViewById<TextView>(R.id.customTextView)
 
-        // Harfi TextView'e atayın
         textView.text = letter
         textView.gravity=Gravity.CENTER
 
