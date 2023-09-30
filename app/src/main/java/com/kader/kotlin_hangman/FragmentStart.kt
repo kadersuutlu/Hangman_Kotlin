@@ -1,5 +1,6 @@
 package com.kader.kotlin_hangman
 
+import FragmentGame
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
