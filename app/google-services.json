@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "501402677845",
+    "firebase_url": "https://hangman-ca2c9-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "hangman-ca2c9",
+    "storage_bucket": "hangman-ca2c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501402677845:android:5ce0bdfaeedb1697169adc",
+        "android_client_info": {
+          "package_name": "com.kader.kotlin_hangman"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7tTiHooX9vw3gtzWOgqBe-2F9zrDxCDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
