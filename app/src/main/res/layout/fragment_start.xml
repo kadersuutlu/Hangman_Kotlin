@@ -35,21 +35,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/circleView">
 
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/green"
-            android:text="Başla"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            />
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="130dp"
+                android:layout_height="42dp"
+                android:text="Başla"
+                android:backgroundTint="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:src="@drawable/play_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/startButton"
+                app:layout_constraintEnd_toEndOf="@+id/startButton"
+                app:layout_constraintStart_toStartOf="@+id/startButton"
+                app:layout_constraintTop_toTopOf="@id/startButton" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <Button
             android:id="@+id/scoreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="42dp"
+            android:text="Skor"
             android:backgroundTint="@color/grey"
-            android:text="Skor"/>
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/startButton"
+            app:layout_constraintTop_toBottomOf="@+id/startButton" />
 
     </LinearLayout>
 

@@ -28,7 +28,10 @@ class FragmentStart : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val startButton = view.findViewById<Button>(R.id.startButton)
+        //startButton.setBackgroundResource(R.drawable.button_background)
         startButton.setOnClickListener {
 
             val fragmentGame = FragmentGame()
@@ -38,6 +41,7 @@ class FragmentStart : Fragment() {
         }
 
         val scoreButton = view.findViewById<Button>(R.id.scoreButton)
+        //scoreButton.setBackgroundResource(R.drawable.button_background)
         scoreButton.setOnClickListener {
 
             val fragmentScore = FragmentScores()

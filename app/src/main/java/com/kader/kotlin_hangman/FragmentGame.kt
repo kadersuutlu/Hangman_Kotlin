@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.kader.kotlin_hangman.AlphabetAdapter
 import com.kader.kotlin_hangman.FragmentFailed
+import com.kader.kotlin_hangman.FragmentSuccess
 import com.kader.kotlin_hangman.R
 
 class FragmentGame : Fragment() {
@@ -21,11 +22,26 @@ class FragmentGame : Fragment() {
     private lateinit var textView2: TextView
     private lateinit var ipucuTextView: TextView
     private lateinit var stepImage: ImageView
+    private lateinit var heart1: ImageView
+    private lateinit var heart2: ImageView
+    private lateinit var heart3: ImageView
+    private lateinit var heart4: ImageView
+    private lateinit var heart5: ImageView
+    private lateinit var heart6: ImageView
 
+    val emptyHeartResource = R.drawable.heart
+    val filledHeartResource = R.drawable.heart_del
 
     private var remainingAttempts = 6
 
+    private var score = 0
+
     val databaseReference = FirebaseDatabase.getInstance().reference.child("kelimeler")
+
+    private val selectedLetters = mutableSetOf<String>()
+
+    private lateinit var levelText: TextView
+    private var currentLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +63,24 @@ class FragmentGame : Fragment() {
         ipucuTextView = view.findViewById(R.id.textView)
         stepImage = view.findViewById(R.id.stepImage)
 
+        levelText = view.findViewById(R.id.levetText)
+
+        // Initialize heart ImageViews
+        heart1 = view.findViewById(R.id.heart1)
+        heart2 = view.findViewById(R.id.heart2)
+        heart3 = view.findViewById(R.id.heart3)
+        heart4 = view.findViewById(R.id.heart4)
+        heart5 = view.findViewById(R.id.heart5)
+        heart6 = view.findViewById(R.id.heart6)
+
+        heart1.setImageResource(emptyHeartResource)
+        heart2.setImageResource(emptyHeartResource)
+        heart3.setImageResource(emptyHeartResource)
+        heart4.setImageResource(emptyHeartResource)
+        heart5.setImageResource(emptyHeartResource)
+        heart6.setImageResource(emptyHeartResource)
+
+
         val gridView = view.findViewById<GridView>(R.id.gridView)
         val alphabet = listOf("A", "B", "C", "Ç", "D", "E", "F", "G", "Ğ", "H", "I", "İ", "J", "K", "L", "M", "N", "O", "Ö", "P", "R", "S", "Ş", "T", "U", "Ü", "V", "Y", "Z")
 
@@ -60,15 +94,21 @@ class FragmentGame : Fragment() {
 
             val letter = alphabet.getOrNull(position)?.toUpperCase() // Harfi büyük harfe çevir
 
-            if (letter != null) {
+            if (letter != null && !selectedLetters.contains(letter)) {
+                selectedLetters.add(letter)
+
                 if (selectedWord?.toUpperCase()?.contains(letter) == true) { // Hem harfi hem de kelimeyi büyük harfe çevir
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
-                    stepImage.setBackgroundResource(R.drawable.step1_icon)
+                    if(!textView2.text.contains("_")){
+                        currentLevel++
+                        updateLevel()
+                    }
                 } else {
                     remainingAttempts--
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     stepImage.setImageResource(getWrongImageResource())
+
                     if (remainingAttempts == 0) {
                         showFailedFragment()
                     }
@@ -127,11 +167,61 @@ class FragmentGame : Fragment() {
 
             textView2?.text = updatedWord.toString()
             Log.d("FragmentGame", "Updated word: $updatedWord")
+
+            if (updatedWord.indexOf('_') == -1) {
+                showSuccessFragment()
+                score += 10
+                updateScoreInFragment()
+            }else{
+                score+=5
+                updateScoreInFragment()
+            }
         }
     }
 
     private fun getWrongImageResource(): Int {
         // Hatalı tıklamalara göre farklı drawable'lar döndür
+        when (remainingAttempts) {
+            5 -> {
+                // Kalp görselini doldurulan haliyle değiştir
+                heart6.setImageResource(filledHeartResource)
+                score -= 2
+            }
+            4 -> {
+                // Kalp görselini doldurulan haliyle değiştir
+                heart5.setImageResource(filledHeartResource)
+                score -= 2
+            }
+            3 -> {
+                // Kalp görselini doldurulan haliyle değiştir
+                heart4.setImageResource(filledHeartResource)
+                score -= 2
+            }
+            2 -> {
+                // Kalp görselini doldurulan haliyle değiştir
+                heart3.setImageResource(filledHeartResource)
+                score -= 2
+            }
+            1 -> {
+                // Kalp görselini doldurulan haliyle değiştir
+                heart2.setImageResource(filledHeartResource)
+                score -= 2
+            }
+            0 -> {
+                heart1.setImageResource(filledHeartResource)
+                showFailedFragment()
+                score -= 2
+            }
+        }
+
+        if (remainingAttempts == 0) {
+            // Hakkımız bittiğinde failed fragment'ı göster ve puanı azalt
+            showFailedFragment()
+            score -= 2
+            updateScoreInFragment()
+        }
+
+        // Hatalı tıklamalara göre farklı drawable döndür
         return when (remainingAttempts) {
             5 -> R.drawable.step2_icon
             4 -> R.drawable.step3_icon
@@ -146,10 +236,40 @@ class FragmentGame : Fragment() {
     private fun showFailedFragment() {
         // Hakkımız bittiğinde failed fragment'ı göster
         val failedFragment = FragmentFailed()
+        val bundle = Bundle()
+        bundle.putString("correctWord", selectedWord)
+        failedFragment.arguments = bundle
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, failedFragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    private fun showSuccessFragment() {
+        val successFragment = FragmentSuccess()
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, successFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun updateScoreInFragment() {
+        // Eğer FragmentSuccess veya FragmentFailed fragment'ı görüntüleniyorsa puanı güncelle
+        val successFragment = requireActivity().supportFragmentManager.findFragmentByTag("FragmentSuccess")
+        val failedFragment = requireActivity().supportFragmentManager.findFragmentByTag("FragmentFailed")
+
+        if (successFragment != null) {
+            successFragment.view?.findViewById<TextView>(R.id.textView5)?.text = "Score: $score"
+        } else if (failedFragment != null) {
+            failedFragment.view?.findViewById<TextView>(R.id.textView5)?.text = "Score: $score"
+        }
+
+        Log.d("FragmentGame", "Score: $score")
+    }
+
+
+    private fun updateLevel() {
+        levelText.text = currentLevel.toString()
     }
 }
 

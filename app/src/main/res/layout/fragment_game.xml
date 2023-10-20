@@ -42,6 +42,17 @@
         android:layout_marginRight="70dp"
         tools:layout_editor_absoluteX="100dp" />
 
+    <TextView
+        android:id="@+id/levetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/levelImage"
+        app:layout_constraintEnd_toEndOf="@+id/levelImage"
+        app:layout_constraintStart_toStartOf="@+id/levelImage"
+        app:layout_constraintTop_toTopOf="@+id/levelImage" />
+
     <ImageView
         android:id="@+id/heart1"
         android:layout_width="wrap_content"
