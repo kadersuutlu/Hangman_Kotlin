@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentSuccess">
+    tools:context=".ui.succes.SuccessFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,6 +13,8 @@
         android:layout_height="137dp"
         android:layout_marginBottom="216dp"
         android:src="@drawable/success_icon"
+        android:layout_marginTop="-50dp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

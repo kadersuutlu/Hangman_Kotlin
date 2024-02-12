@@ -1,4 +1,4 @@
-package com.kader.kotlin_hangman
+package com.kader.kotlin_hangman.ui.adapter
 
 import android.content.Context
 import android.view.Gravity
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.kader.kotlin_hangman.R
 
 class AlphabetAdapter(private val context: Context, private val alphabet: List<String>) : BaseAdapter() {
 
