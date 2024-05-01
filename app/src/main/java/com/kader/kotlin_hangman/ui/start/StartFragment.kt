@@ -1,6 +1,5 @@
 package com.kader.kotlin_hangman.ui.start
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
@@ -16,7 +15,7 @@ class StartFragment(override val screenName: String = ScreenName.START_SCREEN) :
     BaseFragment<FragmentStartBinding, StartViewModel>() {
     override fun initView() {
         binding.startButton.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_scoresFragment)
+            findNavController().navigate(R.id.action_startFragment_to_gameFragment)
         }
         binding.scoreButton.setOnClickListener {
             findNavController().navigate(R.id.action_startFragment_to_scoresFragment)
