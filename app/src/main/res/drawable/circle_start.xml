@@ -4,15 +4,12 @@
         android:width="1dp"
         android:color="@color/limeric_" />
 
-
     <size
         android:width="600dp"
         android:height="600dp" />
 
-
     <corners
-        android:radius="0dp"
         android:bottomLeftRadius="260dp"
         android:bottomRightRadius="260dp"
-    />
+        android:radius="0dp" />
 </shape>

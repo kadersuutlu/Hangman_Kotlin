@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_scores" />
     <fragment
         android:id="@+id/successFragment"
-        android:name="com.kader.kotlin_hangman.ui.succes.SuccessFragment"
+        android:name="com.kader.kotlin_hangman.ui.success.SuccessFragment"
         android:label="fragment_success"
         tools:layout="@layout/fragment_success" />
     <fragment

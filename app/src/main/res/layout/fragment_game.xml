@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,56 +10,51 @@
         android:id="@+id/backgroundImage"
         android:layout_width="1116dp"
         android:layout_height="413dp"
-        android:src="@drawable/background"
+        android:src="@drawable/game_screen_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="352dp"
-        android:layout_height="42dp"
-        android:background="@drawable/background_textview3"
+        android:id="@+id/levelTextView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="5dp"
+        android:background="@drawable/background_text"
+        android:gravity="center_vertical"
         android:text=" Level"
         android:textColor="@color/white"
-        android:gravity="center_vertical"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/stepImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backgroundImage" />
 
-    <ImageView
-        android:id="@+id/levelImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/level"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toStartOf="@+id/heart1"
-        android:layout_marginRight="70dp"
-        tools:layout_editor_absoluteX="100dp" />
-
     <TextView
-        android:id="@+id/levetText"
+        android:id="@+id/levelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="70dp"
+        android:background="@drawable/ic_level_ellipse"
+        android:gravity="center"
         android:text="1"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/levelImage"
-        app:layout_constraintEnd_toEndOf="@+id/levelImage"
-        app:layout_constraintStart_toStartOf="@+id/levelImage"
-        app:layout_constraintTop_toTopOf="@+id/levelImage" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
+        app:layout_constraintEnd_toStartOf="@+id/heart1"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
+        tools:layout_editor_absoluteX="100dp" />
+
 
     <ImageView
         android:id="@+id/heart1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="2dp"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toStartOf="@+id/heart2"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="191dp" />
 
     <ImageView
@@ -69,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="2dp"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toStartOf="@+id/heart3"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="220dp"
         tools:layout_editor_absoluteY="50dp" />
 
@@ -81,10 +74,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="2dp"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toStartOf="@+id/heart4"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="249dp"
         tools:layout_editor_absoluteY="50dp" />
 
@@ -93,10 +86,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="2dp"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toStartOf="@+id/heart5"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="278dp"
         tools:layout_editor_absoluteY="50dp" />
 
@@ -105,10 +98,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="2dp"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toStartOf="@+id/heart6"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="50dp" />
 
@@ -116,11 +109,11 @@
         android:id="@+id/heart6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/heart"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
         android:layout_marginRight="10dp"
+        android:src="@drawable/ic_filled_heart_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
+        app:layout_constraintEnd_toEndOf="@+id/levelTextView"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView"
         tools:layout_editor_absoluteX="336dp"
         tools:layout_editor_absoluteY="50dp" />
 
@@ -131,57 +124,52 @@
         android:src="@drawable/step1_icon"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintTop_toTopOf="@id/levelTextView"
+        app:layout_constraintVertical_bias="0.511" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/wordClueDescription"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:gravity="center"
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:text="İpucu: "
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/wordClue"
         android:layout_width="276dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:textAlignment="center"
+        android:layout_marginVertical="10dp"
         android:text=""
-        android:textStyle="bold"
-        android:textSize="20dp"
+        android:textAlignment="center"
         android:textColor="@color/oliv_drab"
-        app:layout_constraintBottom_toTopOf="@+id/gridView"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/wordClueDescription"/>
 
     <GridView
-        android:id="@+id/gridView"
+        android:id="@+id/gridViewAlphabet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:gravity="center"
-        android:verticalSpacing="5dp"
-        android:horizontalSpacing="5dp"
         android:foregroundGravity="center"
-        android:numColumns="8"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:numColumns="10"
+        android:padding="5dp"
+        android:verticalSpacing="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/wordClue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
