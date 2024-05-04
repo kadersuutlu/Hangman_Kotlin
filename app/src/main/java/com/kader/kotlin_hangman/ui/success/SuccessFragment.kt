@@ -1,4 +1,4 @@
-package com.kader.kotlin_hangman.ui.succes
+package com.kader.kotlin_hangman.ui.success
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

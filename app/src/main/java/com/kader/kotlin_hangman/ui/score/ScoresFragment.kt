@@ -13,7 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class ScoresFragment(override val screenName: String = ScreenName.SCORES_SCREEN) :
     BaseFragment<FragmentScoresBinding, ScoresViewModel>() {
     override fun initView() {
+        viewModel.allScores.observe(viewLifecycleOwner) { scores ->
 
+        }
     }
 
     override val viewModel by viewModels<ScoresViewModel>()

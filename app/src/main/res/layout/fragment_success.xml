@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.succes.SuccessFragment">
+    android:id="@+id/otherFragmentContainer"
+    tools:context=".ui.success.SuccessFragment">
 
-    <ImageView
+    <TextView
         android:id="@+id/imageView"
         android:layout_width="186dp"
         android:layout_height="137dp"
-        android:layout_marginBottom="216dp"
-        android:src="@drawable/success_icon"
-        android:layout_marginTop="-50dp"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginBottom="248dp"
+        android:background="@drawable/ic_success_icon"
+        android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="300dp"
         app:cardBackgroundColor="@color/indigo"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,8 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/button_background"
                 android:layout_marginTop="9dp"
+                android:background="@drawable/start_button_background"
                 android:backgroundTint="@color/green"
                 android:text="Yeni Seviyeyi Oyna" />
         </LinearLayout>

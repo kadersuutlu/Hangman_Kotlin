@@ -1,4 +1,8 @@
 package com.kader.kotlin_hangman.util
 
-class ConstantsKey {
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.stringPreferencesKey
+
+object ConstantsKey {
+    val SCORE_DATABASE: Preferences.Key<String> = stringPreferencesKey("ScoreDatabase.db")
 }
