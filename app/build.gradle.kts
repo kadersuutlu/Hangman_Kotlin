@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.kader.kotlin_hangman"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -81,4 +81,6 @@ dependencies {
 
     implementation("androidx.hilt:hilt-work:1.1.0-alpha01")
     kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")
+
+    implementation ("androidx.work:work-runtime:2.7.0-alpha05")
 }
