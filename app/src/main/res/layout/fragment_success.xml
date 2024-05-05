@@ -4,23 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/otherFragmentContainer"
+    android:background="@color/transparent"
     tools:context=".ui.success.SuccessFragment">
 
     <TextView
-        android:id="@+id/imageView"
+        android:id="@+id/successImage"
         android:layout_width="186dp"
         android:layout_height="137dp"
         android:layout_marginBottom="248dp"
         android:background="@drawable/ic_success_icon"
         android:elevation="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintBottom_toBottomOf="@+id/failedCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/successCardView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         app:cardBackgroundColor="@color/indigo"
@@ -37,7 +37,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/successText"
                 android:layout_width="169dp"
                 android:layout_height="65dp"
                 android:layout_gravity="center"
@@ -49,19 +49,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="46dp"
+                android:textColor="@color/white"
                 android:text="Skor: " />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/maxScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/white"
                 android:text="En Yüksek Skor:" />
 
             <Button
