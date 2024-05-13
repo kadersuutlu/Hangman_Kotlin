@@ -9,12 +9,16 @@
     <color name="green">#99D469</color>
     <color name="green_">#48A161</color>
     <color name="indigo">#3F51B5</color>
+    <color name="blue">#8C9DFA</color>
     <color name="light_coral">#E37474</color>
     <color name="limeric">#DFE247</color>
+    <color name="yellow_light">#EAEC9F</color>
     <color name="limeric_">#DEE247</color>
     <color name="oliv_drab">#A6A849</color>
     <color name="grey">#9E9E9E</color>
     <color name="scarlet">#F42F2F</color>
     <color name="red_maroon">#2C0909</color>
     <color name="transparent">#00RRGGBB</color>
+    <color name="pink">#E37474</color>
+    <color name="dark_gray">#333333</color>
 </resources>

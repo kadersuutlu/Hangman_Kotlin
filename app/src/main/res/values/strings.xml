@@ -5,4 +5,12 @@
     <string name="start">Start</string>
     <string name="score">Score</string>
     <string name="hint">İpucu: %1$s</string>
+    <string name="user">User</string>
+    <string name="level">Level</string>
+    <string name="setting_button">Setting Button</string>
+    <string name="notificationbutton">Notification Button</string>
+    <string name="user_1">User 1</string>
+    <string name="_10">10</string>
+    <string name="user_image">User Image</string>
+    <string name="profile">Profile</string>
 </resources>
