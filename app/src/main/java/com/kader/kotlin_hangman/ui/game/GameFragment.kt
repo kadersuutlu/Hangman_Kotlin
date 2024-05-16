@@ -87,12 +87,15 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 ) {
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
+                    viewModel.incrementScore(10)  // Doğru tahmin için 10 puan ekliyoruz
                     if (!binding.wordClue.text.contains("_")) {
+                        showSuccessFragment()
                     }
                 } else {
                     remainingAttempts--
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
+                    viewModel.incrementScore(-5)  // Yanlış tahmin için 5 puan çıkarıyoruz
 
                     if (remainingAttempts == 0) {
                         showFailedFragment()
@@ -103,6 +106,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
             }
         }
     }
+
 
     private fun getWrongImageResource(): Int {
         when (remainingAttempts) {
@@ -130,7 +134,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     }
 
     private fun updateHiddenWord(letter: String) {
-        val updatedWord = StringBuilder(binding.wordClue?.text.toString())
+        val updatedWord = StringBuilder(binding.wordClue.text.toString())
 
         val indicesToUpdate = mutableListOf<Int>()
 
@@ -154,7 +158,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 }
             }
 
-            binding.wordClue?.text = updatedWord.toString()
+            binding.wordClue.text = updatedWord.toString()
             Log.d("FragmentGame", "Updated word: $updatedWord")
 
             if (updatedWord.indexOf('_') == -1) {
