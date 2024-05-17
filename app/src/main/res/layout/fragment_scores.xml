@@ -69,20 +69,18 @@
 
                 </LinearLayout>
 
-                    <Button
-                        android:id="@+id/levelButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@drawable/score_button_background"
-                        android:text="@string/level"
-                        android:textColor="@color/white" />
+                <Button
+                    android:id="@+id/levelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/score_button_background"
+                    android:text="@string/level"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
         </LinearLayout>
-
-
 
         <ImageView
             android:id="@+id/imageView2"
@@ -92,12 +90,15 @@
             android:layout_marginVertical="15dp"
             android:layout_weight="1"
             android:contentDescription="@string/score"
-            android:src="@drawable/ic_level_scores_icon" />
+            android:src="@drawable/ic_level_icon" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:itemCount="3"
+            android:id="@+id/scoreRecylerView"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="4"
             tools:listitem="@layout/item_score">
 
         </androidx.recyclerview.widget.RecyclerView>
