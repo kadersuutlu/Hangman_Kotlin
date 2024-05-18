@@ -7,7 +7,7 @@ import com.kader.kotlin_hangman.entity.Score
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
+//@HiltViewModel
 class ScoresViewModel @Inject constructor(scoreDao: ScoreDao) : ViewModel() {
     val allScores: LiveData<List<Score>> = scoreDao.getAllScores()
 }

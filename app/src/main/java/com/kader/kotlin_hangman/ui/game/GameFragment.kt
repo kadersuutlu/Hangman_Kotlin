@@ -13,6 +13,7 @@ import com.kader.kotlin_hangman.ui.fail.FailedFragment
 import com.kader.kotlin_hangman.ui.success.SuccessFragment
 import com.kader.kotlin_hangman.util.ScreenName
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 @AndroidEntryPoint
 class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
@@ -77,12 +78,12 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         binding.gridViewAlphabet.setOnItemClickListener { _, gridViewItem, _, _ ->
             val position: Int = binding.gridViewAlphabet.getPositionForView(gridViewItem)
 
-            val letter = alphabet.getOrNull(position)?.toUpperCase()
+            val letter = alphabet.getOrNull(position)?.toUpperCase(Locale.ROOT)
 
             if (letter != null && !selectedLetters.contains(letter)) {
                 selectedLetters.add(letter)
 
-                if (viewModel.selectedWord.value?.toUpperCase()
+                if (viewModel.selectedWord.value?.toUpperCase(Locale.ROOT)
                         ?.contains(letter) == true
                 ) {
                     updateHiddenWord(letter)
@@ -101,6 +102,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                         showFailedFragment()
                     }
                 }
+
             } else {
                 Log.e("FragmentGame", "Invalid position: $position")
             }

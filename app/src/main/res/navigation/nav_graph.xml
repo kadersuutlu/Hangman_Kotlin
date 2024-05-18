@@ -49,4 +49,9 @@
         android:name="com.kader.kotlin_hangman.ui.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.kader.kotlin_hangman.ui.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
 </navigation>

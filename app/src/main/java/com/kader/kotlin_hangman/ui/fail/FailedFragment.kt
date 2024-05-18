@@ -18,7 +18,7 @@ class FailedFragment (override val screenName: String = ScreenName.FAILED_SCREEN
 
         val correctWord = arguments?.getString("correctWord") ?: ""
 
-        binding.correctWord.text = "Doğru cevap: $correctWord"
+        binding.correctWord.text = getString(R.string.correct_answer, correctWord)
 
         binding.buttonAgain.setOnClickListener{
             val gameFragment = GameFragment()

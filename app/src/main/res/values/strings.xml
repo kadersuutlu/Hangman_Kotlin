@@ -13,4 +13,7 @@
     <string name="_10">10</string>
     <string name="user_image">User Image</string>
     <string name="profile">Profile</string>
+    <string name="correct_answer">Doğru cevap: %1$s</string>
+    <string name="next">Next</string>
+    <string name="please_enter_your_name">Please enter your name</string>
 </resources>
