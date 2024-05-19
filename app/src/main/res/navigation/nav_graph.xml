@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/welcomeFragment">
 
     <fragment
         android:id="@+id/startFragment"
@@ -51,7 +51,11 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.kader.kotlin_hangman.ui.WelcomeFragment"
+        android:name="com.kader.kotlin_hangman.ui.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
 </navigation>

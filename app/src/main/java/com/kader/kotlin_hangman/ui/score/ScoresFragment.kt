@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kader.kotlin_hangman.R
 import com.kader.kotlin_hangman.databinding.FragmentScoresBinding
 import com.kader.kotlin_hangman.ui.BaseFragment
 import com.kader.kotlin_hangman.ui.adapter.ScoresAdapter
@@ -25,6 +26,10 @@ class ScoresFragment(override val screenName: String = ScreenName.SCORES_SCREEN)
         viewModel.allScores.observe(viewLifecycleOwner) { scores ->
             scores.let { adapter.setScores(it) }
         }
+
+        val userName = arguments?.getString("userName") ?: ""
+
+        binding.userButton.text = userName
     }
 
     override val viewModel by viewModels<ScoresViewModel>()

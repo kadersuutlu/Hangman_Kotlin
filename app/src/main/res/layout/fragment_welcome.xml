@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/indigo"
-    tools:context=".ui.WelcomeFragment">
+    tools:context=".ui.welcome.WelcomeFragment">
 
     <EditText
         android:id="@+id/editTextName"
@@ -19,7 +19,8 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/buttonOk"
