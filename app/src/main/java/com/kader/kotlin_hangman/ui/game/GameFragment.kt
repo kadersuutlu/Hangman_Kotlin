@@ -20,6 +20,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     BaseFragment<FragmentGameBinding, GameViewModel>() {
 
     private var remainingAttempts = 6
+    private var incrementScore = 0
 
     private val selectedLetters = mutableListOf<String>()
 
@@ -88,7 +89,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 ) {
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
-                    viewModel.incrementScore(10)  // Doğru tahmin için 10 puan ekliyoruz
+                    incrementScore += 10
                     if (!binding.wordClue.text.contains("_")) {
                         showSuccessFragment()
                     }
@@ -96,7 +97,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                     remainingAttempts--
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
-                    viewModel.incrementScore(-5)  // Yanlış tahmin için 5 puan çıkarıyoruz
+                    incrementScore -= 5
 
                     if (remainingAttempts == 0) {
                         showFailedFragment()
@@ -107,6 +108,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 Log.e("FragmentGame", "Invalid position: $position")
             }
         }
+        viewModel.incrementScore(incrementScore)
     }
 
 

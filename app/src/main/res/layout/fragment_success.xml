@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+    android:background="@drawable/bg_success_failed"
     tools:context=".ui.success.SuccessFragment">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginBottom="248dp"
         android:background="@drawable/ic_success_icon"
         android:elevation="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/failedCardView"
+        app:layout_constraintBottom_toBottomOf="@+id/successCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
@@ -54,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="46dp"
-                android:textColor="@color/white"
-                android:text="Skor: " />
+                android:text="Skor: "
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/maxScore"
@@ -63,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/white"
-                android:text="En Yüksek Skor:" />
+                android:text="En Yüksek Skor:"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/buttonSucces"

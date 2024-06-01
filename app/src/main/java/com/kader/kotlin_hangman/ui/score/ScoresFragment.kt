@@ -16,10 +16,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class ScoresFragment(override val screenName: String = ScreenName.SCORES_SCREEN) :
     BaseFragment<FragmentScoresBinding, ScoresViewModel>() {
 
+    private var userName: String? = null
+
     private lateinit var adapter: ScoresAdapter
     override fun initView() {
 
-        adapter = ScoresAdapter()
+        adapter = ScoresAdapter(userName)
         binding.scoreRecylerView.adapter = adapter
         binding.scoreRecylerView.layoutManager = LinearLayoutManager(context)
 
@@ -27,7 +29,9 @@ class ScoresFragment(override val screenName: String = ScreenName.SCORES_SCREEN)
             scores.let { adapter.setScores(it) }
         }
 
-        val userName = arguments?.getString("userName") ?: ""
+        arguments?.let {
+            userName = it.getString("userName")
+        }
 
         binding.userButton.text = userName
     }

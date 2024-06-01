@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kader.kotlin_hangman.databinding.ItemScoreBinding
 import com.kader.kotlin_hangman.entity.Score
 
-class ScoresAdapter : RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder>() {
+class ScoresAdapter(private val userName: String?) :
+    RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder>() {
 
     private val scores = mutableListOf<Score>()
 
@@ -27,6 +28,7 @@ class ScoresAdapter : RecyclerView.Adapter<ScoresAdapter.ScoresViewHolder>() {
 
         fun bind(score: Score) {
             binding.textViewScore.text = score.value.toString()
+            binding.textViewUser.text = userName
         }
     }
 
