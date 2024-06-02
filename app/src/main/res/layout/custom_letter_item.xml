@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><!-- custom_letter_item.xml -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -11,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="A"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="@string/letter" />
 
 </FrameLayout>

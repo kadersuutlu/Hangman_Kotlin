@@ -25,9 +25,10 @@
 
     <LinearLayout
         android:id="@+id/buttonContainer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginHorizontal="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,16 +37,17 @@
 
         <Button
             android:id="@+id/startButton"
-            android:layout_width="130dp"
-            android:layout_height="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/start_button_background"
             android:drawableRight="@drawable/play_icon"
-            android:text="@string/start" />
+            android:text="@string/start"
+            android:paddingRight="15dp"/>
 
         <Button
             android:id="@+id/scoreButton"
-            android:layout_width="130dp"
-            android:layout_height="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:background="@drawable/score_button_background"
             android:text="@string/score" />

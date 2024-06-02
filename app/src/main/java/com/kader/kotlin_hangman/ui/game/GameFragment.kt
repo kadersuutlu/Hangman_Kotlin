@@ -178,7 +178,6 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         failedFragment.arguments = bundle
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, failedFragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 
@@ -186,7 +185,6 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         val successFragment = SuccessFragment()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, successFragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 
@@ -197,4 +195,3 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         container: ViewGroup?
     ): FragmentGameBinding = FragmentGameBinding.inflate(inflater, container, false)
 }
-
