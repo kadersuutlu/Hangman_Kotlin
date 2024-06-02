@@ -32,7 +32,7 @@ class SuccessFragment : BottomSheetDialogFragment() {
     }
 
     private fun buttonSuccessAction() {
-        binding.buttonSucces.setOnClickListener {
+        binding.buttonSuccess.setOnClickListener {
             val gameFragment = GameFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, gameFragment)

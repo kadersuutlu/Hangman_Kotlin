@@ -11,11 +11,12 @@
         android:id="@+id/successImage"
         android:layout_width="186dp"
         android:layout_height="137dp"
-        android:layout_marginBottom="248dp"
-        android:src="@drawable/ic_success_icon"
+        android:layout_marginBottom="252dp"
         android:elevation="4dp"
+        android:src="@drawable/ic_success_icon"
         app:layout_constraintBottom_toBottomOf="@+id/successCardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_margin="30dp">
 
             <TextView
                 android:id="@+id/successText"
@@ -65,8 +66,8 @@
                 android:textColor="@color/white" />
 
             <Button
-                android:id="@+id/buttonSucces"
-                android:layout_width="wrap_content"
+                android:id="@+id/buttonSuccess"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="9dp"
