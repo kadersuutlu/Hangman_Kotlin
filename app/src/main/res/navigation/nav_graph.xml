@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/failedFragment"
-        android:name="com.kader.kotlin_hangman.ui.fail.FailedFragment"
+        android:name="com.kader.kotlin_hangman.ui.dialog.FailedFragment"
         android:label="fragment_failed"
         tools:layout="@layout/fragment_failed" />
     <fragment
@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_scores" />
     <fragment
         android:id="@+id/successFragment"
-        android:name="com.kader.kotlin_hangman.ui.success.SuccessFragment"
+        android:name="com.kader.kotlin_hangman.ui.dialog.SuccessFragment"
         android:label="fragment_success"
         tools:layout="@layout/fragment_success" />
     <fragment

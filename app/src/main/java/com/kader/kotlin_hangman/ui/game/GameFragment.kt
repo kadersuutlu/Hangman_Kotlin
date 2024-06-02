@@ -9,8 +9,8 @@ import com.kader.kotlin_hangman.R
 import com.kader.kotlin_hangman.databinding.FragmentGameBinding
 import com.kader.kotlin_hangman.ui.BaseFragment
 import com.kader.kotlin_hangman.ui.adapter.AlphabetAdapter
-import com.kader.kotlin_hangman.ui.fail.FailedFragment
-import com.kader.kotlin_hangman.ui.success.SuccessFragment
+import com.kader.kotlin_hangman.ui.dialog.FailedFragment
+import com.kader.kotlin_hangman.ui.dialog.SuccessFragment
 import com.kader.kotlin_hangman.util.ScreenName
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
