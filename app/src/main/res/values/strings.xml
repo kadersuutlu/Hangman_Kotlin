@@ -1,19 +1,27 @@
 <resources>
-    <string name="app_name">Hangman</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="start">Start</string>
-    <string name="score">Score</string>
+    <string name="app_name">Adam Asmaca</string>
+    <string name="start">Başla</string>
+    <string name="score">Skor</string>
     <string name="hint">İpucu: %1$s</string>
-    <string name="user">User</string>
-    <string name="level">Level</string>
-    <string name="setting_button">Setting Button</string>
-    <string name="notificationbutton">Notification Button</string>
-    <string name="user_1">User 1</string>
+    <string name="user">Kullanıcı</string>
+    <string name="level">Seviye</string>
+    <string name="setting_button">Ayarlar Butonu</string>
+    <string name="notificationbutton">Bildirim Butonu</string>
+    <string name="user_1">Kullanıcı 1</string>
     <string name="_10">10</string>
-    <string name="user_image">User Image</string>
-    <string name="profile">Profile</string>
+    <string name="user_image">Kullanıcı Resmi</string>
+    <string name="profile">Profil</string>
     <string name="correct_answer">Doğru cevap: %1$s</string>
-    <string name="next">Next</string>
-    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="next">Sonraki</string>
+    <string name="please_enter_your_name">Lütfen adınızı girin</string>
+    <string name="max_score">En yüksek skor:</string>
+    <string name="play_new_level">Yeni Seviye Oyna</string>
+    <string name="congratulations">Tebrikler!</string>
+    <string name="you_lost">Kaybettiniz!</string>
+    <string name="pass_this_level">Bu seviyeyi geçemediniz!</string>
+    <string name="start_again">Yeniden Başla</string>
+    <string name="letter">Harf</string>
+    <string name="level_num">1</string>
+    <string name="word">Kelime</string>
+
 </resources>
