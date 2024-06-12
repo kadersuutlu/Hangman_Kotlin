@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kader.kotlin_hangman.R
 import com.kader.kotlin_hangman.databinding.FragmentGameBinding
 import com.kader.kotlin_hangman.ui.BaseFragment
 import com.kader.kotlin_hangman.ui.adapter.AlphabetAdapter
+import com.kader.kotlin_hangman.ui.adapter.HeartAdapter
 import com.kader.kotlin_hangman.ui.dialog.FailedFragment
 import com.kader.kotlin_hangman.ui.dialog.SuccessFragment
 import com.kader.kotlin_hangman.util.ScreenName
@@ -24,7 +27,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
 
     private val selectedLetters = mutableListOf<String>()
 
-    private val emptyHeartResource = R.drawable.ic_empty_heart_icon
+    private lateinit var heartAdapter: HeartAdapter
 
     override fun initView() {
 
@@ -73,6 +76,8 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         }
 
         viewModel.init()
+
+        setupRecyclerView()
     }
 
     private fun handleAlphabetGridItemClick(alphabet: List<String>) {
@@ -111,16 +116,14 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         viewModel.incrementScore(incrementScore)
     }
 
+    private fun setupRecyclerView() {
+        heartAdapter = HeartAdapter(6)
+        binding.recyclerHeart.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerHeart.adapter = heartAdapter
+    }
 
     private fun getWrongImageResource(): Int {
-        when (remainingAttempts) {
-            5 -> binding.heart6.setImageResource(emptyHeartResource)
-            4 -> binding.heart5.setImageResource(emptyHeartResource)
-            3 -> binding.heart4.setImageResource(emptyHeartResource)
-            2 -> binding.heart3.setImageResource(emptyHeartResource)
-            1 -> binding.heart2.setImageResource(emptyHeartResource)
-            0 -> binding.heart1.setImageResource(emptyHeartResource)
-        }
+        heartAdapter.updateRemainingAttempts(remainingAttempts-1)
 
         if (remainingAttempts == 0) {
             showFailedFragment()

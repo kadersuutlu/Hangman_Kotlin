@@ -41,81 +41,21 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart1"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toStartOf="@+id/recyclerHeart"
+        app:layout_constraintStart_toStartOf="@+id/levelTextView"
+        app:layout_constraintTop_toTopOf="@+id/levelTextView" />
 
 
-    <ImageView
-        android:id="@+id/heart1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHeart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:src="@drawable/ic_filled_heart_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart2"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="191dp" />
-
-    <ImageView
-        android:id="@+id/heart2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:src="@drawable/ic_filled_heart_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart3"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="220dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <ImageView
-        android:id="@+id/heart3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:src="@drawable/ic_filled_heart_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart4"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="249dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <ImageView
-        android:id="@+id/heart4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:src="@drawable/ic_filled_heart_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart5"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <ImageView
-        android:id="@+id/heart5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="2dp"
-        android:src="@drawable/ic_filled_heart_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
-        app:layout_constraintEnd_toStartOf="@+id/heart6"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <ImageView
-        android:id="@+id/heart6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
         android:src="@drawable/ic_filled_heart_icon"
         app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toEndOf="@+id/levelTextView"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView"
-        tools:layout_editor_absoluteX="336dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintTop_toTopOf="@+id/levelTextView" />
+
 
     <ImageView
         android:id="@+id/stepImage"
