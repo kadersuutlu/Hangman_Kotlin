@@ -29,7 +29,7 @@ class GameViewModel @Inject constructor(
     private val _score = MutableLiveData<Int>()
     val score: LiveData<Int> = _score
 
-    private val databaseReference = FirebaseDatabase.getInstance().reference.child("kelimeler")
+    private val databaseReference = FirebaseDatabase.getInstance().reference.child("words")
 
     init {
         _score.value = 0
@@ -43,8 +43,8 @@ class GameViewModel @Inject constructor(
                     val randomIndex = (0 until dataSnapshot.childrenCount).random()
                     val randomWord = dataSnapshot.children.elementAt(randomIndex.toInt())
 
-                    _selectedWord.value = randomWord.child("kelime").getValue(String::class.java)
-                    _description.value = randomWord.child("aciklama").getValue(String::class.java)
+                    _selectedWord.value = randomWord.child("word").getValue(String::class.java)
+                    _description.value = randomWord.child("description").getValue(String::class.java)
                 }
             }
 
