@@ -4,31 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<T : ViewBinding, VM : ViewModel> : Fragment() {
+abstract class BaseDialog<T : ViewBinding> : DialogFragment() {
 
     private var _binding: T? = null
     protected val binding get() = _binding!!
-    abstract fun initView()
-    abstract val screenName: String
-    abstract val viewModel: VM
+
+    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> T
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = createViewBinding(inflater, container)
+        _binding = bindingInflater(inflater, container, false)
         return binding.root
-    }
-
-    abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): T
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initView()
     }
 
     override fun onDestroyView() {

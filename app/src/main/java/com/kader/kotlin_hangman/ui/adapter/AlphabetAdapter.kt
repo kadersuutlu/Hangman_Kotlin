@@ -9,7 +9,8 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.kader.kotlin_hangman.R
 
-class AlphabetAdapter(private val context: Context, private val alphabet: List<String>) : BaseAdapter() {
+class AlphabetAdapter(private val context: Context, private val alphabet: List<String>) :
+    BaseAdapter() {
 
     override fun getCount(): Int {
         return alphabet.size
@@ -31,7 +32,7 @@ class AlphabetAdapter(private val context: Context, private val alphabet: List<S
         val textView = customView.findViewById<TextView>(R.id.customTextView)
 
         textView.text = letter
-        textView.gravity=Gravity.CENTER
+        textView.gravity = Gravity.CENTER
 
         return customView
     }

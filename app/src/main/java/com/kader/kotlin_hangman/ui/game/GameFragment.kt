@@ -12,8 +12,8 @@ import com.kader.kotlin_hangman.databinding.FragmentGameBinding
 import com.kader.kotlin_hangman.ui.BaseFragment
 import com.kader.kotlin_hangman.ui.adapter.AlphabetAdapter
 import com.kader.kotlin_hangman.ui.adapter.HeartAdapter
-import com.kader.kotlin_hangman.ui.dialog.FailedFragment
-import com.kader.kotlin_hangman.ui.dialog.SuccessFragment
+import com.kader.kotlin_hangman.ui.dialog.FailedDialog
+import com.kader.kotlin_hangman.ui.dialog.SuccessDialog
 import com.kader.kotlin_hangman.util.ScreenName
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
@@ -22,15 +22,34 @@ import java.util.Locale
 class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     BaseFragment<FragmentGameBinding, GameViewModel>() {
 
-    private var remainingAttempts = 6
-    private var incrementScore = 0
-
-    private val selectedLetters = mutableListOf<String>()
-
+    private lateinit var failedDialog: FailedDialog
+    private lateinit var successDialog: SuccessDialog
     private lateinit var heartAdapter: HeartAdapter
 
     override fun initView() {
 
+        setupAlphabetRecyclerView()
+
+        viewModelInit()
+
+        setupHeartRecyclerView()
+    }
+
+    private fun viewModelInit() {
+        viewModel.selectedWord.observe(viewLifecycleOwner) { word ->
+            binding.wordClue.text = "_ ".repeat(word?.length ?: 0)
+        }
+
+        viewModel.description.observe(viewLifecycleOwner) { description ->
+            binding.wordClueDescription.text = getString(R.string.hint, description)
+        }
+
+        viewModel.level.observe(viewLifecycleOwner) { level ->
+            binding.levelText.text = level.toString()
+        }
+    }
+
+    private fun setupAlphabetRecyclerView() {
         val alphabet = listOf(
             "A",
             "B",
@@ -66,46 +85,32 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         binding.gridViewAlphabet.adapter = adapter
 
         handleAlphabetGridItemClick(alphabet)
-
-        viewModel.selectedWord.observe(viewLifecycleOwner) { word ->
-            binding.wordClue.text = "_ ".repeat(word?.length ?: 0)
-        }
-
-        viewModel.description.observe(viewLifecycleOwner) { description ->
-            binding.wordClueDescription.text = getString(R.string.hint, description)
-        }
-
-        viewModel.init()
-
-        setupRecyclerView()
     }
 
     private fun handleAlphabetGridItemClick(alphabet: List<String>) {
         binding.gridViewAlphabet.setOnItemClickListener { _, gridViewItem, _, _ ->
             val position: Int = binding.gridViewAlphabet.getPositionForView(gridViewItem)
 
-            val letter = alphabet.getOrNull(position)?.toUpperCase(Locale.ROOT)
+            val letter = alphabet.getOrNull(position)?.uppercase(Locale("tr", "TR"))
 
-            if (letter != null && !selectedLetters.contains(letter)) {
-                selectedLetters.add(letter)
+            if (letter != null && !viewModel.selectedWord.value.isNullOrEmpty()) {
+                val selectedWord = viewModel.selectedWord.value!!.uppercase(Locale("tr", "TR"))
 
-                if (viewModel.selectedWord.value?.toUpperCase(Locale.ROOT)
-                        ?.contains(letter) == true
-                ) {
+                if (selectedWord.contains(letter)) {
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
-                    incrementScore += 10
+                    viewModel.addScore(10)
                     if (!binding.wordClue.text.contains("_")) {
-                        showSuccessFragment()
+                        showSuccessDialog()
                     }
                 } else {
-                    remainingAttempts--
+                    viewModel.updateRemainingAttempts(viewModel.remainingAttempts.value!! - 1)
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
-                    incrementScore -= 5
+                    viewModel.addScore(-5)
 
-                    if (remainingAttempts == 0) {
-                        showFailedFragment()
+                    if (viewModel.remainingAttempts.value == 0) {
+                        showFailedDialog()
                     }
                 }
 
@@ -113,20 +118,22 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 Log.e("FragmentGame", "Invalid position: $position")
             }
         }
-        viewModel.incrementScore(incrementScore)
     }
 
-    private fun setupRecyclerView() {
+    private fun setupHeartRecyclerView() {
         heartAdapter = HeartAdapter(6)
-        binding.recyclerHeart.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerHeart.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerHeart.adapter = heartAdapter
     }
 
     private fun getWrongImageResource(): Int {
-        heartAdapter.updateRemainingAttempts(remainingAttempts-1)
+        val remainingAttempts = viewModel.remainingAttempts.value ?: 0
+
+        heartAdapter.updateRemainingAttempts(remainingAttempts - 1)
 
         if (remainingAttempts == 0) {
-            showFailedFragment()
+            showFailedDialog()
         }
 
         return when (remainingAttempts) {
@@ -169,26 +176,28 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
             Log.d("FragmentGame", "Updated word: $updatedWord")
 
             if (updatedWord.indexOf('_') == -1) {
-                showSuccessFragment()
+                showSuccessDialog()
             }
         }
     }
 
-    private fun showFailedFragment() {
-        val failedFragment = FailedFragment()
+    private fun showFailedDialog() {
+        failedDialog = FailedDialog()
+        failedDialog.setOnRetryListener {
+            findNavController().navigate(R.id.action_gameFragment_self)
+        }
+        failedDialog.show(parentFragmentManager, "failed_dialog")
         val bundle = Bundle()
         bundle.putString("correctWord", viewModel.selectedWord.value)
-        failedFragment.arguments = bundle
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, failedFragment)
-        transaction.commit()
+        failedDialog.arguments = bundle
     }
 
-    private fun showSuccessFragment() {
-        val successFragment = SuccessFragment()
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, successFragment)
-        transaction.commit()
+    private fun showSuccessDialog() {
+        successDialog = SuccessDialog()
+        successDialog.setOnNewGameListener {
+            findNavController().navigate(R.id.action_gameFragment_self)
+        }
+        successDialog.show(parentFragmentManager, "success_dialog")
     }
 
     override val viewModel by viewModels<GameViewModel>()

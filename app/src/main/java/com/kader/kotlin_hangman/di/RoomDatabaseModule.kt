@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.kader.kotlin_hangman.db.ScoreDao
 import com.kader.kotlin_hangman.db.ScoreDatabase
 import com.kader.kotlin_hangman.repository.ScoreRepository
+import com.kader.kotlin_hangman.util.ConstantsKey
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,7 @@ object RoomDatabaseModule {
         Room.databaseBuilder(
             appContext,
             ScoreDatabase::class.java,
-            "score_database"
+            ConstantsKey.score_db
         ).build()
 
     @Provides

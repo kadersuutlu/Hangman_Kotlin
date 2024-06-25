@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="Hangman">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-05-16T18:54:23.501003400Z">
+        <DropdownSelection timestamp="2024-06-22T17:26:18.879713800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Lenovo\.android\avd\Pixel_5_API_33.avd" />

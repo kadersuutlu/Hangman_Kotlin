@@ -12,50 +12,40 @@
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_startFragment_to_scoresFragment"
-            app:destination="@id/scoresFragment" />
+            app:destination="@id/scoresFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_startFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-    <fragment
-        android:id="@+id/failedFragment"
-        android:name="com.kader.kotlin_hangman.ui.dialog.FailedFragment"
-        android:label="fragment_failed"
-        tools:layout="@layout/fragment_failed" />
     <fragment
         android:id="@+id/scoresFragment"
         android:name="com.kader.kotlin_hangman.ui.score.ScoresFragment"
         android:label="fragment_scores"
         tools:layout="@layout/fragment_scores" />
     <fragment
-        android:id="@+id/successFragment"
-        android:name="com.kader.kotlin_hangman.ui.dialog.SuccessFragment"
-        android:label="fragment_success"
-        tools:layout="@layout/fragment_success" />
-    <fragment
         android:id="@+id/gameFragment"
         android:name="com.kader.kotlin_hangman.ui.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
-            android:id="@+id/action_gameFragment_to_successFragment"
-            app:destination="@id/successFragment" />
-        <action
-            android:id="@+id/action_gameFragment_to_failedFragment"
-            app:destination="@id/failedFragment" />
+            android:id="@+id/action_gameFragment_self"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.kader.kotlin_hangman.ui.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.kader.kotlin_hangman.ui.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_startFragment"
-            app:destination="@id/startFragment" />
-    </fragment>
 </navigation>

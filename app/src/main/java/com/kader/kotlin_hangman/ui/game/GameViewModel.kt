@@ -5,59 +5,47 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.kader.kotlin_hangman.entity.Score
 import com.kader.kotlin_hangman.repository.ScoreRepository
+import com.kader.kotlin_hangman.repository.WordRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
 @HiltViewModel
 class GameViewModel @Inject constructor(
-    private val scoreRepository: ScoreRepository
+    private val scoreRepository: ScoreRepository,
+    private val wordRepository: WordRepository
 ) : ViewModel() {
 
-    private val _selectedWord = MutableLiveData<String>()
-    val selectedWord: LiveData<String> = _selectedWord
+    private val _remainingAttempts = MutableLiveData<Int>()
+    val remainingAttempts: LiveData<Int> = _remainingAttempts
 
-    private val _description = MutableLiveData<String>()
-    val description: LiveData<String> = _description
+    private val _incrementScore = MutableLiveData<Int>()
+    val incrementScore: LiveData<Int> = _incrementScore
 
-    private val _score = MutableLiveData<Int>()
-    val score: LiveData<Int> = _score
+    val selectedWord: LiveData<String?> = wordRepository.selectedWord
+    val description: LiveData<String?> = wordRepository.description
 
-    private val databaseReference = FirebaseDatabase.getInstance().reference.child("words")
+    private val _level = MutableLiveData<Int>(1)
+    val level: LiveData<Int> get() = _level
 
     init {
-        _score.value = 0
+        _remainingAttempts.value = 6
+        _incrementScore.value = 0
         loadInitialScores()
+        wordRepository.fetchRandomWord()
     }
 
-    fun init() {
-        databaseReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    val randomIndex = (0 until dataSnapshot.childrenCount).random()
-                    val randomWord = dataSnapshot.children.elementAt(randomIndex.toInt())
-
-                    _selectedWord.value = randomWord.child("word").getValue(String::class.java)
-                    _description.value = randomWord.child("description").getValue(String::class.java)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                println("Database read error: ${databaseError.message}")
-            }
-        })
+    fun updateRemainingAttempts(newAttempts: Int) {
+        _remainingAttempts.value = newAttempts
     }
 
-    fun incrementScore(points: Int) {
-        val newScore = (_score.value ?: 0) + points
-        _score.value = newScore
-        saveScore(newScore)
+    fun addScore(points: Int) {
+        val currentScore = _incrementScore.value ?: 0
+        _incrementScore.value = currentScore + points
+        saveScore(currentScore + points)
     }
 
     private fun saveScore(score: Int) {
@@ -70,9 +58,17 @@ class GameViewModel @Inject constructor(
         viewModelScope.launch {
             scoreRepository.allScores.observeForever { scores ->
                 if (scores.isNotEmpty()) {
-                    _score.value = scores.last().value
+                    _incrementScore.value = scores.last().value
                 }
             }
         }
+    }
+
+    fun nextLevel() {
+        _level.value = (_level.value ?: 1) + 1
+    }
+
+    fun resetLevel() {
+        _level.value = 1
     }
 }
