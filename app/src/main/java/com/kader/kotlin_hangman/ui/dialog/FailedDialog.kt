@@ -8,6 +8,7 @@ import com.kader.kotlin_hangman.ui.BaseDialog
 import com.kader.kotlin_hangman.R
 import com.kader.kotlin_hangman.databinding.DialogFailedBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FailedDialog : BaseDialog<DialogFailedBinding>() {
@@ -15,6 +16,9 @@ class FailedDialog : BaseDialog<DialogFailedBinding>() {
         get() = DialogFailedBinding::inflate
 
     private var onRetryListener: (() -> Unit)? = null
+
+    @Inject
+    lateinit var dialogViewModel: DialogViewModel
 
     fun setOnRetryListener(listener: () -> Unit) {
         onRetryListener = listener
@@ -25,6 +29,7 @@ class FailedDialog : BaseDialog<DialogFailedBinding>() {
 
         showCorrectWord()
         buttonRepeatAction()
+        displayMaxAndLastScores()
     }
 
     private fun showCorrectWord() {
@@ -36,6 +41,25 @@ class FailedDialog : BaseDialog<DialogFailedBinding>() {
         binding.buttonAgain.setOnClickListener {
             onRetryListener?.invoke()
             dismiss()
+        }
+    }
+
+    private fun displayMaxAndLastScores() {
+        dialogViewModel.maxAndLastScores()
+        dialogViewModel.maxScore.observe(viewLifecycleOwner) { maxScore ->
+            binding.maxScore.text = if (maxScore != null) {
+                getString(R.string.max_score_format, maxScore)
+            } else {
+                getString(R.string.no_scores_found)
+            }
+        }
+
+        dialogViewModel.lastScore.observe(viewLifecycleOwner) { lastScore ->
+            binding.score.text = if (lastScore != null) {
+                getString(R.string.last_score_format, lastScore.value)
+            } else {
+                getString(R.string.no_scores_found)
+            }
         }
     }
 }

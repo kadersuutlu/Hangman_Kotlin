@@ -23,5 +23,7 @@
     <string name="letter">Harf</string>
     <string name="level_num">1</string>
     <string name="word">Kelime</string>
-
+    <string name="max_score_format">Max Score: %d</string>
+    <string name="no_scores_found">No scores found</string>
+    <string name="last_score_format">Score: %d</string>
 </resources>

@@ -26,6 +26,8 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     private lateinit var successDialog: SuccessDialog
     private lateinit var heartAdapter: HeartAdapter
 
+    private var score = 0
+
     override fun initView() {
 
         setupAlphabetRecyclerView()
@@ -99,7 +101,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                 if (selectedWord.contains(letter)) {
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
-                    viewModel.addScore(10)
+                    score += 10
                     if (!binding.wordClue.text.contains("_")) {
                         showSuccessDialog()
                     }
@@ -107,12 +109,13 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                     viewModel.updateRemainingAttempts(viewModel.remainingAttempts.value!! - 1)
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
-                    viewModel.addScore(-5)
+                    score -= 5
 
                     if (viewModel.remainingAttempts.value == 0) {
                         showFailedDialog()
                     }
                 }
+                viewModel.addScore(score)
 
             } else {
                 Log.e("FragmentGame", "Invalid position: $position")

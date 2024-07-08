@@ -13,4 +13,10 @@ interface ScoreDao {
 
     @Insert(entity = Score::class)
     fun insertScore(score: Score)
+
+    @Query("SELECT MAX(value) FROM scores")
+    fun getMaxScore(): Int?
+
+    @Query("SELECT * FROM scores ORDER BY id DESC LIMIT 1")
+    fun getLastScore(): Score?
 }

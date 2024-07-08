@@ -14,4 +14,16 @@ class ScoreRepository @Inject constructor(private val scoreDao: ScoreDao) {
             scoreDao.insertScore(score)
         }
     }
+
+    suspend fun getMaxScore(): Int? {
+        return withContext(Dispatchers.IO) {
+            scoreDao.getMaxScore()
+        }
+    }
+
+    suspend fun getLastScore(): Score? {
+        return withContext(Dispatchers.IO) {
+            scoreDao.getLastScore()
+        }
+    }
 }
