@@ -28,7 +28,7 @@ class WordRepository @Inject constructor() {
                     val rawDescription =
                         randomWordSnapshot.child("description").getValue(String::class.java)
 
-                    val processedWord = rawWord?.trim()?.replace("\\s+".toRegex(), " ")
+                    val processedWord = rawWord?.trim()?.replace("\\s+".toRegex(), "")
                     val processedDescription = rawDescription?.trim()
 
                     _selectedWord.value = processedWord
