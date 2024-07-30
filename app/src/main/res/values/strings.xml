@@ -14,7 +14,7 @@
     <string name="correct_answer">Doğru cevap: %1$s</string>
     <string name="next">Sonraki</string>
     <string name="please_enter_your_name">Lütfen adınızı girin</string>
-    <string name="max_score">En yüksek skor:</string>
+    <string name="max_score">En yüksek skor</string>
     <string name="play_new_level">Yeni Seviye Oyna</string>
     <string name="congratulations">Tebrikler!</string>
     <string name="you_lost">Kaybettiniz!</string>
@@ -26,4 +26,5 @@
     <string name="max_score_format">Max Score: %d</string>
     <string name="no_scores_found">No scores found</string>
     <string name="last_score_format">Score: %d</string>
+    <string name="last_score">Son Skor</string>
 </resources>

@@ -106,7 +106,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                         showSuccessDialog()
                     }
                 } else {
-                    viewModel.updateRemainingAttempts(viewModel.remainingAttempts.value!! - 1)
+                   viewModel.updateRemainingAttempts(viewModel.remainingAttempts.value!! - 1)
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
                     score -= 5
@@ -115,7 +115,6 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                         showFailedDialog()
                     }
                 }
-                viewModel.addScore(score)
 
             } else {
                 Log.e("FragmentGame", "Invalid position: $position")
@@ -133,7 +132,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     private fun getWrongImageResource(): Int {
         val remainingAttempts = viewModel.remainingAttempts.value ?: 0
 
-        heartAdapter.updateRemainingAttempts(remainingAttempts - 1)
+        heartAdapter.updateRemainingAttempts(remainingAttempts)
 
         if (remainingAttempts == 0) {
             showFailedDialog()
@@ -179,6 +178,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
             Log.d("FragmentGame", "Updated word: $updatedWord")
 
             if (updatedWord.indexOf('_') == -1) {
+                viewModel.addScore(score)
                 showSuccessDialog()
             }
         }
@@ -189,10 +189,11 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         failedDialog.setOnRetryListener {
             findNavController().navigate(R.id.action_gameFragment_self)
         }
-        failedDialog.show(parentFragmentManager, "failed_dialog")
-        val bundle = Bundle()
-        bundle.putString("correctWord", viewModel.selectedWord.value)
+        val bundle = Bundle().apply {
+            putString("correctWord", viewModel.selectedWord.value)
+        }
         failedDialog.arguments = bundle
+        failedDialog.show(parentFragmentManager, "failed_dialog")
     }
 
     private fun showSuccessDialog() {

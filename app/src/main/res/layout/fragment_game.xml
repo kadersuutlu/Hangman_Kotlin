@@ -19,14 +19,21 @@
         android:id="@+id/levelTextView"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginVertical="5dp"
-        android:layout_marginHorizontal="10dp"
-        android:background="@drawable/background_text"
+        android:background="@color/indigo"
         android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backgroundImage" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="10dp"
+        android:gravity="center"
         android:text="@string/level"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backgroundImage" />
 
@@ -34,16 +41,15 @@
         android:id="@+id/levelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="70dp"
         android:background="@drawable/ic_level_ellipse"
         android:gravity="center"
         android:text="@string/level_num"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textTitle"
         app:layout_constraintEnd_toStartOf="@+id/recyclerHeart"
-        app:layout_constraintStart_toStartOf="@+id/levelTextView"
-        app:layout_constraintTop_toTopOf="@+id/levelTextView" />
+        app:layout_constraintStart_toStartOf="@+id/textTitle"
+        app:layout_constraintTop_toTopOf="@+id/textTitle" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -52,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:src="@drawable/ic_filled_heart_icon"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/levelTextView"
         app:layout_constraintEnd_toEndOf="@+id/levelTextView"
         app:layout_constraintTop_toTopOf="@+id/levelTextView" />
@@ -77,12 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:gravity="center"
-        tools:text="@string/hint"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
+        app:layout_constraintTop_toBottomOf="@+id/backgroundImage"
+        tools:text="@string/hint" />
 
 
     <TextView
@@ -90,14 +96,14 @@
         android:layout_width="276dp"
         android:layout_height="40dp"
         android:layout_marginVertical="10dp"
-        tools:text="@string/word"
         android:textAlignment="center"
         android:textColor="@color/oliv_drab"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordClueDescription"/>
+        app:layout_constraintTop_toBottomOf="@id/wordClueDescription"
+        tools:text="@string/word" />
 
     <GridView
         android:id="@+id/gridViewAlphabet"

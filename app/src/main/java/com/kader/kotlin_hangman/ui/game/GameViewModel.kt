@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val scoreRepository: ScoreRepository,
@@ -62,13 +61,5 @@ class GameViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    fun nextLevel() {
-        _level.value = (_level.value ?: 1) + 1
-    }
-
-    fun resetLevel() {
-        _level.value = 1
     }
 }
