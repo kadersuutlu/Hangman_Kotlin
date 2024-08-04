@@ -134,10 +134,6 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
 
         heartAdapter.updateRemainingAttempts(remainingAttempts)
 
-        if (remainingAttempts == 0) {
-            showFailedDialog()
-        }
-
         return when (remainingAttempts) {
             5 -> R.drawable.step2_icon
             4 -> R.drawable.step3_icon
@@ -179,7 +175,6 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
 
             if (updatedWord.indexOf('_') == -1) {
                 viewModel.addScore(score)
-                showSuccessDialog()
             }
         }
     }

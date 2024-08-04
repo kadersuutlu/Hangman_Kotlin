@@ -36,13 +36,12 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/userButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
                     android:background="@drawable/score_button_background"
                     android:text="@string/user"
                     android:textColor="@color/white" />
@@ -51,6 +50,8 @@
                     android:id="@+id/notificationButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/notification_setting_bg"
                     android:contentDescription="@string/notificationbutton"
                     android:src="@drawable/ic_notification_icon" />
 
@@ -58,6 +59,7 @@
                     android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/notification_setting_bg"
                     android:contentDescription="@string/setting_button"
                     android:src="@drawable/ic_settings_icon" />
 
@@ -65,9 +67,9 @@
 
             <Button
                 android:id="@+id/levelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginVertical="10dp"
                 android:background="@drawable/score_button_background"
                 android:text="@string/level"
                 android:textColor="@color/white" />
@@ -76,24 +78,20 @@
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:background="@drawable/background_cardview_score">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/background_cardview_score">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -111,10 +109,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_margin="10dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -133,8 +131,6 @@
 
 
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imageView2"
