@@ -1,9 +1,11 @@
 package com.kader.kotlin_hangman.ui.game
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -102,18 +104,11 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
                     updateHiddenWord(letter)
                     gridViewItem.setBackgroundResource(R.drawable.custom_success_background)
                     score += 10
-                    if (!binding.wordClue.text.contains("_")) {
-                        showSuccessDialog()
-                    }
                 } else {
                    viewModel.updateRemainingAttempts(viewModel.remainingAttempts.value!! - 1)
                     gridViewItem.setBackgroundResource(R.drawable.custom_failed_background)
                     binding.stepImage.setImageResource(getWrongImageResource())
                     score -= 5
-
-                    if (viewModel.remainingAttempts.value == 0) {
-                        showFailedDialog()
-                    }
                 }
 
             } else {
@@ -133,6 +128,10 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
         val remainingAttempts = viewModel.remainingAttempts.value ?: 0
 
         heartAdapter.updateRemainingAttempts(remainingAttempts)
+
+        if (remainingAttempts == 0) {
+            showFailedDialog()
+        }
 
         return when (remainingAttempts) {
             5 -> R.drawable.step2_icon
@@ -175,6 +174,7 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
 
             if (updatedWord.indexOf('_') == -1) {
                 viewModel.addScore(score)
+                showSuccessDialog()
             }
         }
     }
@@ -200,6 +200,22 @@ class GameFragment(override val screenName: String = ScreenName.GAME_SCREEN) :
     }
 
     override val viewModel by viewModels<GameViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                AlertDialog.Builder(requireContext())
+                    .setMessage(getString(R.string.are_you_sure_go__out))
+                    .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                        isEnabled = false
+                        requireActivity().onBackPressedDispatcher.onBackPressed()
+                    }
+                    .setNegativeButton(getString(R.string.no), null)
+                    .show()
+            }
+        })
+    }
 
     override fun createViewBinding(
         inflater: LayoutInflater,

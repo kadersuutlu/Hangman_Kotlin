@@ -42,9 +42,8 @@ class GameViewModel @Inject constructor(
     }
 
     fun addScore(points: Int) {
-        val currentScore = _incrementScore.value ?: 0
-        _incrementScore.value = currentScore + points
-        saveScore(currentScore + points)
+        _incrementScore.value = (_incrementScore.value ?: 0) + points
+        saveScore(_incrementScore.value ?: 0)
     }
 
     private fun saveScore(score: Int) {

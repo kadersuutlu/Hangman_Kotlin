@@ -27,4 +27,7 @@
     <string name="no_scores_found">No scores found</string>
     <string name="last_score_format">Score: %d</string>
     <string name="last_score">Son Skor</string>
+    <string name="are_you_sure_go__out">Çıkmak istediğinize emin misiniz?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
 </resources>
