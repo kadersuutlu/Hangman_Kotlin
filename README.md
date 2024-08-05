@@ -10,11 +10,11 @@ This project is an ongoing development of a hangman game implemented in Kotlin. 
 - Score tracking
 
 ## Screenshots
-![Start Screen](screenshots/ss1.png)
-![Score Screen](screenshots/ss2.png)
-![Game Screen](screenshots/ss3.png)
-![Game Screen](screenshots/ss4.png)
-![Game Screen](screenshots/ss5.png)
-![Success Dialog](screenshots/ss6.png)
-![Failed Dialog](screenshots/ss7.png)
+![Start Screen](screenshots/ss1.jpg)
+![Score Screen](screenshots/ss2.jpg)
+![Game Screen](screenshots/ss3.jpg)
+![Game Screen](screenshots/ss4.jpg)
+![Game Screen](screenshots/ss5.jpg)
+![Success Dialog](screenshots/ss6.jpg)
+![Failed Dialog](screenshots/ss7.jpg)
 
