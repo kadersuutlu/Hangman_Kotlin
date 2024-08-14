@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@drawable/bg_success_failed">
+    android:layout_gravity="center">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/failedCardView"
